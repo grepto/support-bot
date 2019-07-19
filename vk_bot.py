@@ -2,13 +2,13 @@ import os
 import logging
 import random
 
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 from dialog import get_dialog_response
 
-# load_dotenv()
+load_dotenv()
 VK_GROUP_TOKEN = os.getenv('VK_GROUP_TOKEN')
 
 # logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
