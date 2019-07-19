@@ -1,12 +1,12 @@
 import os
 import logging
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from dialog import get_dialog_response
 
-load_dotenv()
+# load_dotenv()
 TG_TOKEN = os.getenv('TG_TOKEN')
 
 logger = logging.getLogger('tg_bot')

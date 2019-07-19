@@ -2,9 +2,9 @@ import logging
 import os
 
 import telegram
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 TG_TOKEN = os.getenv('TG_TOKEN')
 TG_CHAT_ID = os.getenv('TG_CHAT_ID')
