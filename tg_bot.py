@@ -2,6 +2,7 @@ import os
 import logging
 
 # from dotenv import load_dotenv
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from dialog import get_dialog_response
