@@ -24,9 +24,9 @@ def create_intent(name, training_phrases, messages, parameters=None, project_id=
         'parameters': parameters,
         'messages': messages,
     }
-    response = intents_client.create_intent(parent, intent, intent_view=dialogflow.enums.IntentView.INTENT_VIEW_FULL)
+    intent = intents_client.create_intent(parent, intent, intent_view=dialogflow.enums.IntentView.INTENT_VIEW_FULL)
 
-    return response
+    return MessageToDict(intent, preserving_proto_field_name=True)
 
 
 def delete_intent(name, project_id=DIALOGFLOW_PROJECT_ID):
