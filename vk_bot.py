@@ -27,15 +27,15 @@ def response(event, vk_api):
 
 def bot():
     try:
-      logger.info('VK bot started')
-      vk_session = vk_api.VkApi(token=VK_GROUP_TOKEN)
-      api = vk_session.get_api()
-      longpoll = VkLongPoll(vk_session)
-      for event in longpoll.listen():
-          if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-              response(event, api)
+        logger.info('VK bot started')
+        vk_session = vk_api.VkApi(token=VK_GROUP_TOKEN)
+        api = vk_session.get_api()
+        longpoll = VkLongPoll(vk_session)
+        for event in longpoll.listen():
+            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                response(event, api)
     except vk_api.exceptions.ApiError as error:
-      logger.error(error)
+        logger.error(error)
 
 
 if __name__ == "__main__":

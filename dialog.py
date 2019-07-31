@@ -26,9 +26,9 @@ def get_dialog_response(session_id, text, language_code='ru', project_id=DIALOGF
 
 def main():
     session_id = 1
-    text = 'Почему я забанен'
+    text = 'Как восстановить пароль?'
 
-    print(get_dialog_response(session_id, text)['response_text'])
+    print(get_dialog_response(session_id, text))
 
 if __name__ == '__main__':
     main()
