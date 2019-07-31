@@ -3,7 +3,7 @@ import logging.config
 import argparse
 from dotenv import load_dotenv
 
-from tg_bot import bot as tg_bot
+from tg_bot import start_bot as tg_bot
 from vk_bot import bot as vk_bot
 from train_bot import train_bot
 

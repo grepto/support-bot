@@ -12,45 +12,45 @@ TG_TOKEN = os.getenv('TG_TOKEN')
 logger = logging.getLogger('tg_bot')
 
 
-def start(bot, update):
+def send_wellcome_message(bot, update):
     update.message.reply_text('Здравствуйте\nЧто вас интересует?')
 
 
-def help(bot, update):
+def send_help_message(bot, update):
     update.message.reply_text(
         'Бот ответит на вопросы по работа с вашим аккаунтом и проконсультирует по поводу устройства на работу')
 
 
-def echo(bot, update):
+def send_echo(bot, update):
     update.message.reply_text(update.message.text)
 
 
-def dialog(bot, update):
+def send_dialog_answer(bot, update):
     response = get_dialog_response(update.message.chat_id, update.message.text)
     update.message.reply_text(response['response_text'])
 
 
-def error(bot, update, error):
+def send_error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
 
-def caps(bot, update, args):
+def get_uppercased_echo(bot, update, args):
     text_caps = ' '.join(args).upper()
     bot.send_message(chat_id=update.message.chat_id, text=text_caps)
 
 
-def bot():
+def start_bot():
     try:
         logger.info(f'TG bot started')
         updater = Updater(TG_TOKEN)
         dp = updater.dispatcher
-        dp.add_handler(CommandHandler("start", start))
-        dp.add_handler(CommandHandler("help", help))
-        dp.add_handler(CommandHandler("caps", caps, pass_args=True))
+        dp.add_handler(CommandHandler("start", send_wellcome_message))
+        dp.add_handler(CommandHandler("help", send_help_message))
+        dp.add_handler(CommandHandler("caps", get_uppercased_echo, pass_args=True))
 
-        dp.add_handler(MessageHandler(Filters.text, dialog))
+        dp.add_handler(MessageHandler(Filters.text, send_dialog_answer))
 
-        dp.add_error_handler(error)
+        dp.add_error_handler(send_error)
 
         updater.start_polling()
 
@@ -60,4 +60,4 @@ def bot():
 
 
 if __name__ == '__main__':
-    bot()
+    start_bot()
