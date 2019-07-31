@@ -41,11 +41,8 @@ def get_intent(name, project_id=DIALOGFLOW_PROJECT_ID):
     client = dialogflow.IntentsClient()
     parent = client.project_agent_path(project_id)
     intents = client.list_intents(parent, intent_view=dialogflow.enums.IntentView.INTENT_VIEW_FULL)
-    try:
-        intent = [intent for intent in intents if intent.display_name == name][0]
-    except IndexError:
-        return None
-    return MessageToDict(intent, preserving_proto_field_name=True)
+    name_to_intent = {intent.display_name: intent for intent in intents}
+    return MessageToDict(name_to_intent.get(name), preserving_proto_field_name=True)
 
 
 def train_bot(training_set_file, is_rewrite_answers=False):
