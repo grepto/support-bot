@@ -17,6 +17,7 @@ def get_dialog_response(session_id, text, language_code='ru', project_id=DIALOGF
     response = {
         'query_text': dialogflow_response.query_result.query_text,
         'intent': dialogflow_response.query_result.intent.display_name,
+        'is_fallback': dialogflow_response.query_result.intent.is_fallback,
         'confidence': dialogflow_response.query_result.intent_detection_confidence,
         'response_text': dialogflow_response.query_result.fulfillment_text,
     }

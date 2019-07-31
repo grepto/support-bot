@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 def response(event, vk_api):
     response = get_dialog_response(event.user_id, event.text)
     logger.debug(response)
-    if response['intent'] != 'Default Fallback Intent':
+    if not response['is_fallback']:
         vk_api.messages.send(
             user_id=event.user_id,
             message=response['response_text'],
