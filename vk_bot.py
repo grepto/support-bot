@@ -11,8 +11,6 @@ from dialog import get_dialog_response
 load_dotenv()
 VK_GROUP_TOKEN = os.getenv('VK_GROUP_TOKEN')
 
-# logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-#                     level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 

@@ -23,12 +23,6 @@ def get_dialog_response(session_id, text, language_code='ru', project_id=DIALOGF
     return response
 
 
-# Документация библиотеки диалогфлоу с примерами создания и удаления индентов
-# https://dialogflow-python-client-v2.readthedocs.io/en/latest/#
-# Документация RES-API
-# https://cloud.google.com/dialogflow/docs/reference/rest/v2-overview
-
-
 def main():
     session_id = 1
     text = 'Почему я забанен'
